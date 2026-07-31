@@ -1,1 +1,32 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saving Contact...</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <p>Loading contact details, please wait...</p>
+    <script>
+        window.onload = function() {
+            // Path to your VCF file in the same folder
+            var vcfUrl = 'contact.vcf'; 
+            
+            // Create a temporary hidden download link
+            var link = document.createElement('a');
+            link.href = vcfUrl;
+            link.setAttribute('download', 'contact.vcf');
+            document.body.appendChild(link);
+            
+            // Trigger the download automatically
+            link.click();
+            document.body.removeChild(link);
+            
+            // Fallback redirect for certain older mobile browsers
+            setTimeout(function() {
+                window.location.href = vcfUrl;
+            }, 500);
+        };
+    </script>
+</body>
+</html>
